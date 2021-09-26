@@ -1,27 +1,33 @@
 <div ngClass="bigPictureContainer">
   <img [src]="mainPicture" width="{{mainPictureWidth}}" height="{{mainPictureHeight}}" ngClass="bigPicture"/>
 </div>
-<div ngClass="">
-  <button (click)="previewPicture()" [disabled]="previewButton">Anterior</button>
-  <button (click)="nextPicture()" [disabled]="nextButton">Siguiente</button>
-  <button (click)="increase()">Aumentar</button>
-  <button (click)="reduce()">Disminuir</button>
-  <button (click)="playOrStop()">{{playString}}</button>
+<div ngClass="smallPanel">
+  <button mat-raised-button color="primary" (click)="previewPicture()" [disabled]="previewButton">Anterior</button>
+  <button mat-raised-button color="primary" (click)="nextPicture()" [disabled]="nextButton">Siguiente</button>
+  <button mat-raised-button color="primary" (click)="increase()">Aumentar</button>
+  <button mat-raised-button color="primary" (click)="reduce()">Disminuir</button>
+  <button mat-raised-button color="primary" (click)="playOrStop()">{{playString}}</button>
 </div>
 
 <div ngClass="smallGallery">
-  <button (click)="previewList()" [disabled]="previewListButton">Anterior</button>
+  <button mat-raised-button color="primary" (click)="previewList()" [disabled]="previewListButton">Anterior</button>
   <div  *ngFor="let picture of pictures | gallerySlice:firstImageListItem:lastImageListItem; let i=index"
   [class.selected]="selected === i"
   (click)="setFocus(i)">
     <img [src]="picture.src" width="150" height="100" (click)="getPicture($event)"/>
   </div>
-  <button (click)="nextList()" [disabled]="nextListButton">Siguiente</button>
+  <button mat-raised-button color="primary" (click)="nextList()" [disabled]="nextListButton">Siguiente</button>
 </div>
 
-<h2 rotate>Rotate exercise</h2>
-<div>
-  <img rotate src="assets/amsterdam.jpeg" width="500" height="300" ngClass="bigPicture"/>
-  <img rotate="45" src="assets/praga.jpeg" width="500" height="300" ngClass="bigPicture"/>
-  <img rotate="45" step="15" src="assets/viena.jpeg" width="500" height="300" ngClass="bigPicture"/>
+<p rotate>Rotate Exercise, but I can not rotate</p>
+<div ngClass="rotateGallery">
+  <div ngClass="rotateCell">
+    <img rotate src="assets/amsterdam.jpeg" ngClass="rotatePicture"/>
+  </div>
+  <div ngClass="rotateCell">
+    <img rotate="45" src="assets/praga.jpeg" ngClass="rotatePicture"/>
+  </div>
+  <div ngClass="rotateCell">
+    <img rotate="45" step="15" src="assets/viena.jpeg" ngClass="rotatePicture"/>
+  </div>
 </div>

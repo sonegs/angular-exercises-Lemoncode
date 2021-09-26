@@ -1,5 +1,6 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -9,11 +10,29 @@ import { AuthService } from '../services/auth.service';
 export class MenuComponent implements OnInit {
 
   auth = new AuthService();
-  constructor() {
+  logged: boolean = false;
+
+  constructor(private router: Router) {
 
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+  }
+
+  ifLogged() { // Va hacia el servicio isLogged
+
+    if(this.auth.isLogged()) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
 
-}
+  isLogOut = () => {
+    this.auth.logout();
+    this.router.navigate(['/home']);
+    };
+
+
+  }

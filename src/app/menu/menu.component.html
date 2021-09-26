@@ -1,14 +1,37 @@
-<mat-toolbar *ngIf="!auth.isLogged()">
-    <a routerLink="/home" routerLinkActive="selected">Home</a>
-    <a routerLink="/login" routerLinkActive="selected">Login</a>
-    <a routerLink="/about" routerLinkActive="selected">About Us</a>
-</mat-toolbar>
-
-<mat-toolbar *ngIf="auth.isLogged()">
-    <a routerLink="/dashboard" routerLinkActive="selected">Dashboard</a>
-    <a routerLink="/gallery" routerLinkActive="selected">Gallery</a>
-    <a routerLink="/crud" routerLinkActive="selected">CRUD</a>
-    <a routerLink="/profile" routerLinkActive="selected">Profile</a>
-    <span>{{auth.getUsername()}}</span>
-    <button (click)="auth.logout()">Salir</button>
+<mat-toolbar color="primary">
+  <div *ngIf="!ifLogged()" fxFlex fxLayout fxLayoutAlign="end" fxHide.xs class="navigation-div">
+      <ul fxLayout fxLayoutGap="15px" class="public-navigation-list" >
+          <li>
+            <a routerLink="/home" routerLinkActive="selected">Home</a>
+          </li>
+          <li>
+            <a routerLink="/login" routerLinkActive="selected">Login</a>
+          </li>
+          <li>
+            <a routerLink="/about" routerLinkActive="selected">About Us</a>
+          </li>
+      </ul>
+  </div>
+  <div *ngIf="ifLogged()" fxFlex fxLayout fxLayoutAlign="end" fxHide.xs class="navigation-div">
+      <ul fxLayout fxLayoutGap="15px" class="private-navigation-list">
+          <li>
+            <a routerLink="/dashboard" routerLinkActive="selected">Dashboard</a>
+          </li>
+          <li>
+            <a routerLink="/gallery" routerLinkActive="selected">Gallery</a>
+          </li>
+          <li>
+            <a routerLink="/crud" routerLinkActive="selected">CRUD</a>
+          </li>
+          <li>
+            <a routerLink="/profile" routerLinkActive="selected">Profile</a>
+          </li>
+          <li>
+            <span class="user-email">{{auth.getUsername()}}</span>
+          </li>
+          <li>
+            <button mat-raised-button (click)="isLogOut()">Salir</button>
+          </li>
+      </ul>
+  </div>
 </mat-toolbar>

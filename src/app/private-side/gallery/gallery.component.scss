@@ -1,7 +1,50 @@
-.smallGallery{
+.bigPictureContainer, .smallPanel, .smallGallery{
   display: flex;
+  justify-content: center;
 }
 
 .selected{
-  border-top:yellow 3px solid;
+  border-left:yellow 3px solid;
+}
+.bigPictureContainer{
+  margin-top: 5px;
+}
+button{
+  margin: 5px;
+}
+
+.bigPicture{
+  border-radius: 5px;
+}
+
+p{
+  text-align: center;
+  margin:30px 0 5px;
+  font-size:22px
+}
+
+.rotateGallery {
+  margin-top:10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+
+  .rotateCell{
+    display: flex;
+    justify-content: center;
+
+    .rotatePicture{
+      margin: 5px;
+      width: 300px;
+      height: 200px;
+      border-radius: 5px;
+    }
+  }
+}
+
+@media(max-width: 950px){
+  .rotateGallery {
+    grid-template-columns: 1fr;
+    margin: 10px 0 40px;
+  }
 }

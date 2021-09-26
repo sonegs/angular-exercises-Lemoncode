@@ -1,55 +1,28 @@
-<div>
-  <form #memberForm="ngForm">
-    <div>
-        <label>Name </label>
-        <input name="user" [(ngModel)]="newLogin.username" required minlength="6" #user="ngModel"/>
-        <div *ngIf="user.invalid && user.touched">
+<mat-card *ngIf="!loading">
+  <mat-card-content>
+    <form #memberForm="ngForm">
+      <h2>Login</h2>
+      <mat-error *ngIf="loginInvalid">
+        The username and password were not recognized
+      </mat-error>
+      <mat-form-field ngClass="full-width-input">
+        <input matInput placeholder="Email" name="user" [(ngModel)]="newLogin.username" required minlength="6" #user="ngModel"/>
+        <mat-error *ngIf="user.invalid && user.touched">
           <div *ngIf="user.errors?.required">Debe añadir un nombre de usuario</div>
           <div *ngIf="user.errors?.minlength">Mínimo {{ user.errors?.minlength.requiredLength }} caracteres en el nombre del usuario</div>
-        </div>
-    </div>
-    <div>
-        <label>Password </label>
-        <input type="password" name="password" [(ngModel)]="newLogin.password" required minlength="8" #password="ngModel" />
-        <div *ngIf="password.invalid && password.touched">
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field ngClass="full-width-input">
+        <input matInput placeholder="Password" type="password" name="password" [(ngModel)]="newLogin.password" required minlength="8" #password="ngModel" />
+        <mat-error *ngIf="password.invalid && password.touched">
           <div *ngIf="password.errors?.required">La contraseña es obligatoria</div>
           <div *ngIf="password.errors?.minlength">Mínimo {{ password.errors?.minlength.requiredLength }} caracteres en password</div>
-        </div>
-    </div>
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="goLogin()">Login</button>
+    </form>
+  </mat-card-content>
+</mat-card>
 
-    <button (click)="goLogin()">Entrar</button>
-  </form>
-</div>
-<!--
-<p>
-  <mat-form-field appearance="legacy">
-    <mat-label>Legacy form field</mat-label>
-    <input matInput placeholder="Placeholder">
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
-  </mat-form-field>
-</p>
-<p>
-  <mat-form-field appearance="standard">
-    <mat-label>Standard form field</mat-label>
-    <input matInput placeholder="Placeholder">
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
-  </mat-form-field>
-</p>
-<p>
-  <mat-form-field appearance="fill">
-    <mat-label>Fill form field</mat-label>
-    <input matInput placeholder="Placeholder">
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
-  </mat-form-field>
-</p>
-<p>
-  <mat-form-field appearance="outline">
-    <mat-label>Outline form field</mat-label>
-    <input matInput placeholder="Placeholder">
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-    <mat-hint>Hint</mat-hint>
-  </mat-form-field>
-</p> -->
+
+<img *ngIf="loading" src="assets/gear.gif" width="65" height="50"/>
