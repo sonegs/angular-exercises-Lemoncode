@@ -1,0 +1,42 @@
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="reweForm">
+      <h2>Rewe Login Form</h2>
+      <mat-hint *ngIf="reweValid">
+        The form is correct!
+      </mat-hint>
+      <mat-form-field ngClass="full-width-input">
+        <input matInput placeholder="Email" type="email" class="form-control" formControlName="email"/>
+        <mat-error *ngIf="reweForm.get('email')?.invalid && reweForm.get('email')?.touched">
+          <div *ngIf="valEmail?.errors?.required">Email is required</div>
+          <div *ngIf="valEmail?.errors?.pattern">Please provide a valid email address</div>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field ngClass="full-width-input">
+        <input matInput placeholder="Numbers" type="text" class="form-control" formControlName="numbers"/>
+        <mat-error *ngIf="reweForm.get('numbers')?.invalid && reweForm.get('numbers')?.touched">
+          <div *ngIf="valNumbers?.errors?.required">Numbers are required</div>
+          <div *ngIf="valNumbers?.errors?.pattern">Please provide numbers only</div>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field ngClass="full-width-input">
+        <input matInput placeholder="Characters" type="text" class="form-control" formControlName="characters"/>
+        <mat-error *ngIf="reweForm.get('characters')?.invalid && reweForm.get('characters')?.touched">
+          <div *ngIf="valCharacters?.errors?.required">Characters is required</div>
+          <div *ngIf="valCharacters?.errors?.pattern">Please provide only special Characters</div>
+        </mat-error>
+      </mat-form-field>
+      <button mat-raised-button color="primary" (click)="reweSend()">Send</button>
+    </form>
+  </mat-card-content>
+</mat-card>
+<mat-card  *ngIf="reweValid">
+  <mat-card-content>
+    <p>Email: {{this.rewe.email}}</p>
+    <p>Numbers: {{this.rewe.numbers}}</p>
+    <p>Characters: {{this.rewe.characters}}</p>
+  </mat-card-content>
+</mat-card>
+
+
+

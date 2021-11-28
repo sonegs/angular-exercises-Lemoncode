@@ -20,6 +20,7 @@ import { GalleryComponent } from './private-side/gallery/gallery.component';
 import { MainComponentComponent } from './commons/main-component/main-component.component';
 import { RotateDirective } from './directives/rotate.directive';
 import { GallerySlicePipe } from './private-side/gallery/pipe/gallery-slice.pipe';
+import { ReweModule } from './public-side/rewe/rewe.module';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { GallerySlicePipe } from './private-side/gallery/pipe/gallery-slice.pipe
     BrowserAnimationsModule,
     MatSidenavModule,
     LoginModule,
+    ReweModule,
     MatToolbarModule,
     MatButtonModule,
     MatIconModule
